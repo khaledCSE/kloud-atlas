@@ -1,8 +1,11 @@
-import React from 'react'
+type Props = {
+  ownerId: string
+  accountId: string
+}
 
-const FileUploader = () => {
+const FileUploader = ({ accountId, ownerId }: Props) => {
   return (
-    <div>FileUploader</div>
+    <div>FileUploader: Acc - {accountId}, owner - {ownerId}</div>
   )
 }
 
