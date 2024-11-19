@@ -1,5 +1,6 @@
 'use client';
 
+import { FileDetails } from "@/components/dashboard/ActionsModalContent";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -81,6 +82,11 @@ const ActionsDropdown = ({ file }: Props) => {
               onChange={(e) => setName(e.target.value)}
             />
           )}
+
+          {value === 'details' && (
+            <FileDetails file={file} />
+          )}
+
         </DialogHeader>
         {['rename', 'share', 'delete'].includes(value) && (
           <DialogFooter className="flex flex-col gap-3 md:flex-row">
