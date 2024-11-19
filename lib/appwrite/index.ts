@@ -12,7 +12,8 @@ export const createSessionClient = async () => {
   const session = (await cookies()).get('appwrite-session')
 
   if (!session?.value) {
-    throw new Error('No Session')
+    console.error('No Session')
+    return
   }
 
   client.setSession(session.value)
@@ -32,8 +33,6 @@ export const createAdminClient = async () => {
     .setEndpoint(appWriteConfig.endpointUrl)
     .setProject(appWriteConfig.projectId)
     .setKey(appWriteConfig.secretKey)
-
-  console.log(client);
 
 
   return {
