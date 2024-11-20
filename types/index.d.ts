@@ -12,6 +12,7 @@ declare interface ActionType {
 }
 
 declare interface SearchParamProps {
+  // eslint-disable-next-line no-undef
   params?: Promise<SegmentParams>;
   searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }
