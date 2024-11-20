@@ -4,7 +4,7 @@ import { getCurrentUser, handleError } from "@/lib/actions/user.actions";
 import { createAdminClient } from "@/lib/appwrite";
 import { appWriteConfig } from "@/lib/appwrite/config";
 import { constructFileUrl, getFileType, parseStringify } from "@/lib/utils";
-import { DeleteFileProps, RenameFileProps, UpdateFileUsersProps, UploadFileProps } from "@/types";
+import { DeleteFileProps, GetFilesProps, RenameFileProps, UpdateFileUsersProps, UploadFileProps } from "@/types";
 import { revalidatePath } from "next/cache";
 import { ID, Models, Query } from "node-appwrite";
 import { InputFile } from "node-appwrite/file";
@@ -57,7 +57,7 @@ export const uploadFile = async ({
 
 const createQueries = (
   currentUser: Models.Document,
-  // types: string[],
+  types: string[] = [],
   // searchText: string,
   // sort: string,
   // limit?: number,
@@ -69,7 +69,7 @@ const createQueries = (
     ]),
   ];
 
-  // if (types.length > 0) queries.push(Query.equal("type", types));
+  if (types.length > 0) queries.push(Query.equal("type", types));
   // if (searchText) queries.push(Query.contains("name", searchText));
   // if (limit) queries.push(Query.limit(limit));
 
@@ -84,7 +84,7 @@ const createQueries = (
   return queries;
 };
 
-export const getFiles = async () => {
+export const getFiles = async ({ types }: GetFilesProps) => {
   const { databases } = await createAdminClient()
 
   try {
@@ -94,10 +94,7 @@ export const getFiles = async () => {
       throw new Error('No user found')
     }
 
-    const queries = createQueries(currentUser)
-
-    console.log({ currentUser, queries });
-
+    const queries = createQueries(currentUser, types)
 
     const files = await databases.listDocuments(
       appWriteConfig.databaseId,
