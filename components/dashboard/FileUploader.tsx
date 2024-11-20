@@ -68,7 +68,7 @@ const FileUploader = ({ accountId, ownerId, className }: Props) => {
   return (
     <div {...getRootProps()} className="cursor-pointer">
       <input {...getInputProps()} />
-      <Button type="button" className={cn("uploader-button text-white", className)}>
+      <Button type="button" className={cn("uploader-button text-white w-full", className)}>
         <Image
           src="/assets/icons/upload.svg"
           alt="upload"
