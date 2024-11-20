@@ -1,6 +1,6 @@
 'use client';
 
-import { FileDetails } from "@/components/dashboard/ActionsModalContent";
+import { DeleteConfirmation, FileDetails, ShareInput } from "@/components/dashboard/ActionsModalContent";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input";
 import { actionsDropdownItems } from "@/constants";
-import { renameFile } from "@/lib/actions/file.actions";
+import { deleteFile, renameFile, updateFileUsers } from "@/lib/actions/file.actions";
 import { constructDownloadUrl } from "@/lib/utils";
 import { ActionType } from "@/types";
 import Image from "next/image";
@@ -39,6 +39,8 @@ const ActionsDropdown = ({ file }: Props) => {
   const [action, setAction] = useState<ActionType | null>(null)
   const [name, setName] = useState(file.name)
   const [isLoading, setIsLoading] = useState(false)
+  const [emails, setEmails] = useState<string[]>([])
+
   const path = usePathname()
 
   const closeAllModals = () => {
@@ -54,7 +56,9 @@ const ActionsDropdown = ({ file }: Props) => {
     let success = false;
 
     const actions = {
-      rename: () => renameFile({ name, fileId: file.$id, extension: file.extension, path })
+      rename: () => renameFile({ name, fileId: file.$id, extension: file.extension, path }),
+      share: () => updateFileUsers({ fileId: file.$id, emails, path }),
+      delete: () => deleteFile({ path, fileId: file.$id, bucketFileId: file.bucketFileId })
     }
 
     success = await actions[action.value as keyof typeof actions]()
@@ -64,6 +68,17 @@ const ActionsDropdown = ({ file }: Props) => {
     }
 
     setIsLoading(false)
+  }
+
+  const handleRemoveUser = async (email: string) => {
+    const updatedEmails = emails.filter((em) => em !== email)
+    const success = await updateFileUsers({ path, fileId: file.$id, emails: updatedEmails })
+
+    if (success) {
+      setEmails(updatedEmails)
+    }
+
+    closeAllModals()
   }
 
   const renderDialogContent = () => {
@@ -85,6 +100,18 @@ const ActionsDropdown = ({ file }: Props) => {
 
           {value === 'details' && (
             <FileDetails file={file} />
+          )}
+
+          {value === 'share' && (
+            <ShareInput
+              file={file}
+              onInputChange={setEmails}
+              onRemove={handleRemoveUser}
+            />
+          )}
+
+          {value === 'delete' && (
+            <DeleteConfirmation file={file} />
           )}
 
         </DialogHeader>
