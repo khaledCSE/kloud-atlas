@@ -78,3 +78,10 @@ declare interface ShareInputProps {
   onInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onRemove: (email: string) => void;
 }
+export interface FileMeta {
+  title: string;
+  size: number;
+  latestDate: string;
+  icon: string;
+  url: string;
+}
