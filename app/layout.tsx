@@ -13,8 +13,8 @@ const poppins = Poppins({
 
 
 export const metadata: Metadata = {
-  title: "MKZStore",
-  description: "MKZStore - A cloud-based storage solution",
+  title: "Kloud Atlas | A cloud-based storage solution",
+  description: "Kloud Atlas - A cloud-based storage solution",
 };
 
 export default function RootLayout({

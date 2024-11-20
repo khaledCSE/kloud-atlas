@@ -17,13 +17,16 @@ const Sidebar = ({ fullName, email, avatar }: Props) => {
   return (
     <aside className='sidebar'>
       <Link href="/">
-        <Image
-          src="/assets/icons/logo-full-brand.svg"
-          alt='Logo'
-          width={160}
-          height={50}
-          className='hidden h-auto lg:block'
-        />
+        <div className='hidden h-auto items-center gap-2 lg:flex'>
+          <Image
+            src="/assets/icons/logo-brand.svg"
+            alt='Logo'
+            width={52}
+            height={52}
+            className='hidden h-auto lg:block'
+          />
+          <span className='text-2xl font-semibold text-brand-600'>Kloud Atlas</span>
+        </div>
         <Image
           src="/assets/icons/logo-brand.svg"
           alt='Logo'
@@ -56,7 +59,7 @@ const Sidebar = ({ fullName, email, avatar }: Props) => {
       </nav>
 
       <Image
-        src='/assets/images/files-2.png'
+        src='/assets/images/files.png'
         alt='Files'
         width={506}
         height={418}

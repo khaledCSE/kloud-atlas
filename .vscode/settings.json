@@ -11,7 +11,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  "cSpell.words": ["appwrite"],
+  "cSpell.words": ["appwrite", "Kloud"],
   "eslint.validate": [
     "javascript",
     "typescript",

@@ -32,13 +32,16 @@ const MobileNavigation = ({ fullName, email, avatar, ownerId, accountId }: Props
 
   return (
     <header className="mobile-header">
-      <Image
-        src='/assets/icons/logo-full-brand.svg'
-        alt="logo"
-        width={120}
-        height={52}
-        className="h-auto"
-      />
+      <div className="flex items-center gap-2">
+        <Image
+          src="/assets/icons/logo-brand.svg"
+          alt='Logo'
+          width={32}
+          height={32}
+          className='h-auto lg:hidden'
+        />
+        <span className='text-2xl font-semibold text-brand-600'>Kloud Atlas</span>
+      </div>
 
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger>
