@@ -92,7 +92,8 @@ export const getFiles = async ({ types, searchText = '', sort = '$createdAt-desc
     const currentUser = await getCurrentUser()
 
     if (!currentUser) {
-      throw new Error('No user found')
+      console.error('No user found')
+      return redirect('/sign-in')
     }
 
     const queries = createQueries(currentUser, types, searchText, sort, limit)
