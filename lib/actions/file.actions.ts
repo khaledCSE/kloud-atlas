@@ -6,6 +6,7 @@ import { appWriteConfig } from "@/lib/appwrite/config";
 import { constructFileUrl, getFileType, parseStringify } from "@/lib/utils";
 import { DeleteFileProps, FileType, GetFilesProps, RenameFileProps, UpdateFileUsersProps, UploadFileProps } from "@/types";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { ID, Models, Query } from "node-appwrite";
 import { InputFile } from "node-appwrite/file";
 
@@ -211,5 +212,6 @@ export async function getTotalSpaceUsed() {
     return parseStringify(totalSpace);
   } catch (error) {
     handleError(error, "Error calculating total space used:, ");
+    redirect('/sign-in')
   }
 }
