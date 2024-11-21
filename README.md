@@ -3,11 +3,17 @@
 > Empowering Teams & Individuals with Seamless File Management and Collaboration.
 > Kloud Atlas is a robust Google Drive alternative designed for modern workflows, offering secure storage, advanced file management, and intuitive collaboration features.
 
-Showcase a sleek mockup of Kloud Atlas's dashboard with a visual of the usage metrics, file upload UI, and search functionality.
+<center>
+  <img src="https://github.com/khaledCSE/kloud-atlas/blob/main/public/docs/Kloud-Atlas-Cover.png?raw=true" />
+</center>
 
 ## Overview
 
 Built for performance, scalability, and simplicity, Kloud Atlas streamlines file management and sharing. With cutting-edge features like email OTP authentication, multi-file uploads, and advanced search, it caters to developers and businesses seeking a reliable cloud storage solution.
+
+<center>
+  <img src="https://github.com/khaledCSE/kloud-atlas/blob/main/public/docs/dashboard.png?raw=true" />
+</center>
 
 ## Core Features
 
@@ -28,7 +34,9 @@ Built for performance, scalability, and simplicity, Kloud Atlas streamlines file
 
 - Advanced Querying: Search, sort, filter, and paginate files with ease.
 
-Image: Highlight the file-sharing modal, showing the generated link and sharing options. The dashboard analytics could be visible in the background.
+<center>
+  <img src="https://github.com/khaledCSE/kloud-atlas/blob/main/public/docs/file-sharing.png?raw=true" />
+</center>
 
 ## Tech Stack
 
@@ -47,7 +55,9 @@ Image: Highlight the file-sharing modal, showing the generated link and sharing 
 
 ## Architecture Overview
 
-Image: An architectural diagram showing the relationships between Next.js (frontend/backend), Appwrite (BaaS, storage, and mailing), and the database.
+<center>
+  <img src="https://github.com/khaledCSE/kloud-atlas/blob/main/public/docs/Kloud-Atlas-Arch-Diag.png?raw=true" />
+</center>
 
 ## Setup Guide
 
@@ -90,6 +100,20 @@ NEXT_API_KEY=
 ```bash
 pnpm dev
 ```
+
+## Deployment
+
+Kloud Atlas is deployed on Vercel, leveraging its optimized serverless infrastructure for seamless scalability and global performance.
+
+## Try It Now
+
+[Live Demo: Kloud Atlas]()
+
+### Why Vercel?
+
+- Blazing Fast Edge Network: Optimized delivery for dynamic and static content.
+- Serverless Functions: Ideal for Next.js's hybrid features like API routes.
+- CI/CD Integration: Automatic builds and deployments on every Git push.
 
 ## Future Roadmap
 
