@@ -104,7 +104,7 @@ export const getCurrentUser = async () => {
 
   if (user.total <= 0) return null;
 
-  return parseStringify(user.documents[0])
+  return parseStringify(user?.documents[0])
 }
 
 export const signOutUser = async () => {
