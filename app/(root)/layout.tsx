@@ -10,12 +10,12 @@ type Props = {
   children: ReactNode
 }
 
+export const dynamic = "force-dynamic";
+
 const Layout = async ({ children }: Props) => {
   const currentUser = await getCurrentUser()
 
   if (!currentUser) return redirect('/sign-in');
-
-
 
   return (
     <main className="flex h-screen">
