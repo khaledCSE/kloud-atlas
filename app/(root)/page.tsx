@@ -27,7 +27,7 @@ export default async function Home() {
 
   return (
     <div>
-      <section className="flex gap-10">
+      <section className="flex flex-col gap-10 lg:flex-row">
         <div className="flex-1">
           <Chart used={totalSpaceUsed.used} />
           <FileTypeSummary usageSummary={usageSummary} />
